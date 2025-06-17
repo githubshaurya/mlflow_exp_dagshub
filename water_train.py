@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import dagshub
 
-dagshub.init(repo_owner='githubshaurya', repo_name='my-first-repo', mlflow=True)
+dagshub.init(repo_owner='githubshaurya', repo_name='mlflow_exp_dagshub', mlflow=True)
 
 mlflow.set_experiment("water_exp2")
-mlflow.set_tracking_uri("https://dagshub.com/githubshaurya/my-first-repo.mlflow")
+mlflow.set_tracking_uri("https://dagshub.com/githubshaurya/mlflow_exp_dagshub.mlflow")
 data = pd.read_csv(r"/mnt/c//NLP_practice/python_learn/MLOps/mlflow_exp/data/water_potability.csv")
 
 data.isnull().sum()
@@ -73,7 +73,7 @@ with mlflow.start_run():
     plt.title("Confusion Matrix")
     plt.savefig("Confusion_matrix.png")
     mlflow.log_artifact("Confusion_matrix.png")
-    mlflow.sklearn.log_model(clf, "GradientBoostingClassifier")
+    # mlflow.sklearn.log_model(clf, "GradientBoostingClassifier")
     mlflow.log_artifact(__file__)
     mlflow.set_tag("Author", "Datathinkers")
     mlflow.set_tag("model", "GB")
